@@ -6,7 +6,7 @@ permalink: /javascript/project/memory
 
 <style>
     .memoryCanvas { 
-        border: 10px solid #000;
+        border: 10px solid #ADD8E6;
         display: block;
         margin-left: auto;
         margin-right: auto;

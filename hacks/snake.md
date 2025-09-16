@@ -1,7 +1,7 @@
 ---
-layout: base
-title: Snakey Gamey
-permalink: /snake/
+layout: opencs
+title: Snake Game
+permalink: /snake
 ---
 
 <style>
@@ -63,15 +63,14 @@ permalink: /snake/
     }
 
     #setting input:checked + label{
-        background-color: #ADD8E6;
+        background-color: #FFF;
         color: #000;
     }
 </style>
 
-<h2>Snakey Gamey</h2>
+<h2>Snake</h2>
 <div class="container">
-    <p class="fs-4">How good you are: <span id="score_value">0</span></p>
-
+    <p class="fs-4">Score: <span id="score_value">0</span></p>
     <div class="container bg-secondary" style="text-align:center;">
         <!-- Main Menu -->
         <div id="menu" class="py-4 text-light">

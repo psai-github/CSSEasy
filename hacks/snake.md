@@ -1,7 +1,7 @@
 ---
-layout: opencs
+layout: base
 title: Snake Game
-permalink: /snake
+permalink: /snake/
 ---
 
 <style>
@@ -17,7 +17,7 @@ permalink: /snake
         display: none;
         border-style: solid;
         border-width: 10px;
-        border-color: #FFFFFF;
+        border-color: #aa9df5ff;
     }
     canvas:focus{
         outline: none;
@@ -63,26 +63,27 @@ permalink: /snake
     }
 
     #setting input:checked + label{
-        background-color: #FFF;
+        background-color: #8886ebff;
         color: #000;
     }
 </style>
 
-<h2>Snake</h2>
+<h2>Snakeasy</h2>
 <div class="container">
     <p class="fs-4">Score: <span id="score_value">0</span></p>
+
     <div class="container bg-secondary" style="text-align:center;">
         <!-- Main Menu -->
         <div id="menu" class="py-4 text-light">
-            <p>Welcome to Snake, press <span style="background-color: #FFFFFF; color: #000000">space</span> to begin</p>
-            <a id="new_game" class="link-alert">new game</a>
-            <a id="setting_menu" class="link-alert">settings</a>
+            <p>Welcome to Snake, press <span style="background-color: #aca9a9ff; color: #000000">space</span> to begin</p>
+            <a id="new_game" class="link-alert">New game (nuevo juego)</a>
+            <a id="setting_menu" class="link-alert">Settings</a>
         </div>
         <!-- Game Over -->
         <div id="gameover" class="py-4 text-light">
-            <p>Game Over, press <span style="background-color: #FFFFFF; color: #000000">space</span> to try again</p>
-            <a id="new_game1" class="link-alert">new game</a>
-            <a id="setting_menu1" class="link-alert">settings</a>
+            <p>Game Over For you, press <span style="background-color: #aaa9a9ff; color: #000000">space</span> to start over</p>
+            <a id="new_game1" class="link-alert">New game</a>
+            <a id="setting_menu1" class="link-alert">Settings</a>
         </div>
         <!-- Play Screen -->
         <canvas id="snake" class="wrap" width="320" height="320" tabindex="1"></canvas>
@@ -266,14 +267,20 @@ permalink: /snake
             }
             // Repaint canvas
             ctx.beginPath();
-            ctx.fillStyle = "royalblue";
+            ctx.fillStyle = "lightblue";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            // Paint snake
+            // Paint snake (head gets different color)
             for(let i = 0; i < snake.length; i++){
-                activeDot(snake[i].x, snake[i].y);
+                if(i === 0){
+                    // head
+                    activeDot(snake[i].x, snake[i].y, "darkgreen");
+                } else {
+                    // body
+                    activeDot(snake[i].x, snake[i].y, "#FFFFFF");
+                }
             }
             // Paint food
-            activeDot(food.x, food.y);
+            activeDot(food.x, food.y, "darkred");
             // Debug
             //document.getElementById("debug").innerHTML = snake_dir + " " + snake_next_dir + " " + snake[0].x + " " + snake[0].y;
             // Recursive call after speed delay, déjà vu
@@ -325,10 +332,10 @@ permalink: /snake
         }
         /* Dot for Food or Snake part */
         /////////////////////////////////////////////////////////////
-        let activeDot = function(x, y){
-            ctx.fillStyle = "#FFFFFF";
-            ctx.fillRect(x * BLOCK, y * BLOCK, BLOCK, BLOCK);
-        }
+                let activeDot = function(x, y, color){
+                    ctx.fillStyle = color || "#FFFFFF";
+                    ctx.fillRect(x * BLOCK, y * BLOCK, BLOCK, BLOCK);
+                }
         /* Random food placement */
         /////////////////////////////////////////////////////////////
         let addFood = function(){

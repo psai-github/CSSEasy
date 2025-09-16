@@ -1,6 +1,6 @@
 ---
 layout: base
-title: Snake Game
+title: Snakey Gamey
 permalink: /snake/
 ---
 
@@ -63,14 +63,14 @@ permalink: /snake/
     }
 
     #setting input:checked + label{
-        background-color: #FFF;
+        background-color: #ADD8E6;
         color: #000;
     }
 </style>
 
-<h2>Snake</h2>
+<h2>Snakey Gamey</h2>
 <div class="container">
-    <p class="fs-4">Score: <span id="score_value">0</span></p>
+    <p class="fs-4">How good you are: <span id="score_value">0</span></p>
 
     <div class="container bg-secondary" style="text-align:center;">
         <!-- Main Menu -->

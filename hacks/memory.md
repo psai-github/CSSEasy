@@ -18,9 +18,9 @@ permalink: /javascript/project/memory
     }
 </style>
 
-<h2>Memory Game</h2>
-<p>Score: <span class="score"></span></p>
-<p>Attempts: <span class="attempts"></span></p>
+<h2>Memory Challenge</h2>
+<p>Memory: <span class="score"></span></p>
+<p>Tries: <span class="attempts"></span></p>
 <div class="container">
     <canvas class="memoryCanvas" id="memoryCanvas" width="600" height="400"></canvas>
 </div>

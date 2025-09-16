@@ -37,8 +37,8 @@ HTML implementation of the calculator.
   
     border-radius: 10px;
     padding: 0.25em;
-    font-size: 20px;
-    border: 5px solid black;
+    font-size: 21px;
+    border: 10px solid black;
   
     display: flex;
     align-items: center;

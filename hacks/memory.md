@@ -29,6 +29,9 @@ permalink: /javascript/project/memory
     // Get canvas and context for drawing
     const memCanvas = document.getElementById('memoryCanvas');
     const memCtx = memCanvas.getContext('2d');
+    // grid size constants
+    const COLS = 4;
+    const ROWS = 4;
 
     // Game state variables
     let clicks = 0; // Tracks number of clicks in current turn
@@ -46,8 +49,8 @@ permalink: /javascript/project/memory
         memCtx.strokeStyle = '#000';
         memCtx.lineWidth = 10;
 
-        canvasCol = cols;
-        canvasRow = rows;
+    let canvasCol = cols;
+    let canvasRow = rows;
 
         const canvasWidth = memCanvas.width;
         const canvasHeight = memCanvas.height;
@@ -88,7 +91,11 @@ permalink: /javascript/project/memory
         }
     }
 
-    drawGrid(4, 4); // Draw the grid
+    // ensure canvas is cleared and has a white background
+    memCtx.clearRect(0, 0, memCanvas.width, memCanvas.height);
+    memCtx.fillStyle = '#FFFFFF';
+    memCtx.fillRect(0, 0, memCanvas.width, memCanvas.height);
+    drawGrid(COLS, ROWS); // Draw the grid
 
     // Prepare emoji pairs and shuffle
     const baseEmojis = [
@@ -122,15 +129,15 @@ permalink: /javascript/project/memory
         }
     }
     // Show all emojis for 3 seconds, then hide them
-    setTimeout(() => hideEmojis(4, 4), 3000);
+    setTimeout(() => hideEmojis(COLS, ROWS), 3000);
 
     // Reveals the emoji at a specific cell
     function revealEmojiAt(col, row, emojis) {
-        const cellWidth = memCanvas.width / 4;
-        const cellHeight = memCanvas.height / 4;
+        const cellWidth = memCanvas.width / COLS;
+        const cellHeight = memCanvas.height / ROWS;
         const x = col * cellWidth + cellWidth / 2;
         const y = row * cellHeight + cellHeight / 2;
-        const emojiIndex = row * 4 + col;
+        const emojiIndex = row * COLS + col;
         const emoji = emojis[emojiIndex];
 
         // Draw white background and emoji
@@ -155,9 +162,14 @@ permalink: /javascript/project/memory
         const y = event.clientY - rect.top;
 
         // Calculate which cell was clicked
-        const col = Math.floor(x / (memCanvas.width / 4));
-        const row = Math.floor(y / (memCanvas.height / 4));
-        const emojiIndex = row * 4 + col;
+    // account for CSS scaling / DPR: map client coords to canvas coords
+    const scaleX = memCanvas.width / rect.width;
+    const scaleY = memCanvas.height / rect.height;
+    const canvasX = (event.clientX - rect.left) * scaleX;
+    const canvasY = (event.clientY - rect.top) * scaleY;
+    const col = Math.floor(canvasX / (memCanvas.width / COLS));
+    const row = Math.floor(canvasY / (memCanvas.height / ROWS));
+    const emojiIndex = row * COLS + col;
 
         // Prevent clicking already matched or already revealed cell
         if (
@@ -173,7 +185,7 @@ permalink: /javascript/project/memory
         clicks += 1;
 
         // If two emojis are revealed, check for a match
-        if (revealedCells.length === 2) {
+                if (revealedCells.length === 2) {
             attempts += 1;
             attemptsDisplay.textContent = attempts;
             if (revealedCells[0].emoji === revealedCells[1].emoji) {
@@ -200,5 +212,5 @@ permalink: /javascript/project/memory
     });
 
     // Draw all emojis at the start (for initial reveal)
-    drawEmojis(4, 4, emojiList);
+    drawEmojis(COLS, ROWS, emojiList);
 </script>

@@ -42,7 +42,7 @@ Information:
 
       const grad = ctx.createRadialGradient(cx, cy, r * 0.3, cx, cy, r);
       grad.addColorStop(0, "#5a3b1a"); // inner dirt
-      grad.addColorStop(1, "#2e1b0b"); // dark rim
+      grad.addColorStop(1, "#1491a7ff"); // dark rim
       ctx.fillStyle = grad;
       ctx.beginPath();
       ctx.arc(cx, cy, r, 0, Math.PI * 2);

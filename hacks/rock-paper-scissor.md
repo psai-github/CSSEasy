@@ -17,25 +17,26 @@ permalink: /rock-paper-scissor/
 <script type="module">
   // --- UI (purple box) ---
     const instructionsStyle = `
-  position: relative;
-  margin: 64px auto 48px auto;
-    background: linear-gradient(135deg, black, purple);
-    color: white;
-    padding: 30px;
-    border-radius: 15px;
-    z-index: 1000;
-    max-width: 600px;
-    width: 90%;
-    max-height: 80vh;      /* added */
-    overflow-y: auto;      /* added */
-    font-family: 'Press Start 2P', cursive;
-    border: 3px solid purple;
-    box-shadow: 0 0 20px rgba(128, 0, 128, 0.5);
-    text-align: center;
-    `;
+    position: relative;
+    margin: 64px auto 48px auto;
+      /* darker blue gradient instead of purple/pink */
+      background: linear-gradient(135deg, #021124, #0b3d91);
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      z-index: 1000;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;      /* added */
+      overflow-y: auto;      /* added */
+      font-family: 'Press Start 2P', cursive;
+      border: 3px solid #1e90ff;
+      box-shadow: 0 0 20px rgba(30, 144, 255, 0.18);
+      text-align: center;
+      `;
 
   const instructionsHTML = `
-    <h2 style="color: purple; margin-bottom: 20px;">Rock Paper Scissors SHOOT!</h2>
+  <h2 style="color: #7dd3fc; margin-bottom: 20px;">Rock Paper Scissors SHOOT!</h2>
     <div style="margin-bottom: 20px;">
       <p>Play the game from your browser console!</p>
       <p>Type <code>playRPS("rock")</code>, <code>playRPS("paper")</code>, or <code>playRPS("scissors")</code></p>
@@ -54,13 +55,17 @@ permalink: /rock-paper-scissor/
              style="width:100px; border:2px solid white; border-radius:10px;">
       </button>
     </div>
-    <div style="margin-bottom:18px; font-size:1.1em; color:#ffd700;">
+    <div style="margin-bottom:18px; font-size:1.1em; color:#a0e7ff;">
       Click any icon to customize using the console!
     </div>
     <!-- mount battle canvas INSIDE the purple box so you can see it -->
     <div id="battleMount" style="display:block; margin:12px auto;"></div>
 
-    <div id="resultBox" style="margin-top: 16px; font-size: 16px; color: yellow;"></div>
+  <div id="resultBox" style="margin-top: 16px; font-size: 16px; color: #bfeffd;"></div>
+    <div id="scoreboard" style="margin-top:12px; color:#fff; font-family:monospace;">
+      Wins: <span id="wins">0</span> &nbsp; Losses: <span id="losses">0</span> &nbsp; Ties: <span id="ties">0</span>
+      <div style="margin-top:8px;"><button id="play-again">Play Again</button></div>
+    </div>
   `;
   const container = document.createElement("div");
   container.setAttribute("style", instructionsStyle);
@@ -311,6 +316,66 @@ permalink: /rock-paper-scissor/
     console.log(`Computer chose: ${computerChoice.toUpperCase()}`);
     console.log(`Result: ${resultText}`);
   };
+
+  // --- persistent scoreboard and sound feedback ---
+  (function(){
+    const winsEl = document.getElementById('wins');
+    const lossesEl = document.getElementById('losses');
+    const tiesEl = document.getElementById('ties');
+    const playAgain = document.getElementById('play-again');
+
+    function loadStats(){
+      const s = JSON.parse(localStorage.getItem('rps_stats')||'{}');
+      winsEl.textContent = s.wins||0;
+      lossesEl.textContent = s.losses||0;
+      tiesEl.textContent = s.ties||0;
+    }
+    function saveStats(wins,losses,ties){
+      localStorage.setItem('rps_stats', JSON.stringify({wins,losses,ties}));
+    }
+    loadStats();
+
+    // update after each play
+    const origPlay = window.playRPS;
+    window.playRPS = function(choice){
+      origPlay(choice);
+      // read current result text
+      const txt = document.getElementById('resultBox').innerText || '';
+      let w = parseInt(winsEl.textContent||'0');
+      let l = parseInt(lossesEl.textContent||'0');
+      let t = parseInt(tiesEl.textContent||'0');
+      if(txt.includes('You Win')){ w++; playTone('win'); }
+      else if(txt.includes('You Lose')){ l++; playTone('lose'); }
+      else { t++; playTone('tie'); }
+      winsEl.textContent = w; lossesEl.textContent = l; tiesEl.textContent = t;
+      saveStats(w,l,t);
+    };
+
+    playAgain.addEventListener('click', ()=>{
+      document.getElementById('resultBox').innerHTML = '';
+      resetAll();
+      Object.values(sprites).forEach(s=>s.resetPosition());
+      // clear highlights
+      ['rock-img','paper-img','scissors-img'].forEach(id=>{ const el=document.getElementById(id); if(el) el.style.boxShadow='';});
+    });
+
+    // small webaudio tones
+    let audioCtx;
+    function playTone(type){
+      try{
+        if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+        const o = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        o.connect(g); g.connect(audioCtx.destination);
+        g.gain.value = 0.06;
+        if(type==='win') { o.frequency.value = 660; o.type='sine'; }
+        else if(type==='lose'){ o.frequency.value = 220; o.type='sawtooth'; }
+        else { o.frequency.value = 400; o.type='triangle'; }
+        o.start();
+        setTimeout(()=>{ try{o.stop();}catch(e){} }, 180);
+      }catch(e){/* ignore */}
+    }
+  })();
 
   class GameObject {
     constructor(id) {

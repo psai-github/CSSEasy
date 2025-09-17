@@ -1,5 +1,5 @@
 ---
-layout: opencs
+layout: base
 title: Solitaire Game
 permalink: /solitaire/
 ---

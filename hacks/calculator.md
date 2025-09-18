@@ -2,7 +2,11 @@
 title: JS Calculator
 comments: true
 hide: true
+<<<<<<< HEAD
 layout: base
+=======
+layout: 
+>>>>>>> 7b2d969 (Add calculator hacks markdown and notebook, update calculator code)
 description: A common way to become familiar with a language is to build a calculator.  This calculator shows off button with actions.
 permalink: /calculator
 ---
@@ -25,6 +29,7 @@ HTML implementation of the calculator.
     Background is credited to Vanta JS and is implemented at bottom of this page
 -->
 <style>
+<<<<<<< HEAD
   /* Calculator container: grid layout (4 columns) */
   .calculator-container {
     display: grid;
@@ -57,6 +62,99 @@ HTML implementation of the calculator.
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+=======
+  body {
+    background: #10153a;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+  .calculator-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(20,30,60,0.7);
+    border-radius: 20px;
+    box-shadow: 0 0 30px #0008;
+  }
+  .calculator-output {
+    grid-column: span 4;
+    height: 70px;
+    border-radius: 12px;
+    padding: 0 20px;
+    font-size: 2.2rem;
+    border: 6px solid #111;
+    background: #0a1830;
+    color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-family: 'Consolas', 'Menlo', monospace;
+  }
+  .calculator-number, .calculator-operation, .calculator-clear, .calculator-equals {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    border-radius: 12px;
+    background: #1b7c7c;
+    color: #ccc;
+    height: 120px;
+    cursor: pointer;
+    border: 4px solid #222;
+    transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+    box-shadow: 0 2px 8px #0004;
+    user-select: none;
+  }
+  .calculator-number:active, .calculator-operation:active, .calculator-clear:active, .calculator-equals:active {
+    background: #159191;
+    color: #fff;
+  }
+  .calculator-clear {
+    background: #ff9800;
+    color: #fff;
+    font-weight: bold;
+  }
+  .calculator-equals {
+    background: #222;
+    color: #fff;
+    font-weight: bold;
+  }
+  .calculator-operation {
+    background: #1b7c7c;
+    color: #fff;
+    font-weight: bold;
+  }
+  .calculator-operation:active {
+    background: #159191;
+  }
+  .calculator-number {
+    background: #1b7c7c;
+    color: #ccc;
+  }
+  .calculator-number:active {
+    background: #159191;
+    color: #fff;
+  }
+  @media (max-width: 900px) {
+    .calculator-container {
+      max-width: 98vw;
+      grid-gap: 10px;
+      padding: 10px;
+    }
+    .calculator-output {
+      font-size: 1.3rem;
+      height: 45px;
+      padding: 0 8px;
+    }
+    .calculator-number, .calculator-operation, .calculator-clear, .calculator-equals {
+      font-size: 1.3rem;
+      height: 60px;
+    }
+>>>>>>> 7b2d969 (Add calculator hacks markdown and notebook, update calculator code)
   }
 
   /* Buttons (numbers and ops) */
@@ -128,15 +226,19 @@ HTML implementation of the calculator.
       <div class="calculator-number">6</div>
       <div class="calculator-operation">-</div>
       <!--row 3-->
-      <div class="calculator-number">7</div>
-      <div class="calculator-number">8</div>
-      <div class="calculator-number">9</div>
-      <div class="calculator-operation">*</div>
-      <!--row 4-->
-      <div class="calculator-clear">A/C</div>
-      <div class="calculator-number">0</div>
-      <div class="calculator-number">.</div>
-      <div class="calculator-equals">=</div>
+    <div class="calculator-number">7</div>
+    <div class="calculator-number">8</div>
+    <div class="calculator-number">9</div>
+    <div class="calculator-operation">*</div>
+    <!--row 4-->
+    <div class="calculator-clear">A/C</div>
+    <div class="calculator-number">0</div>
+    <div class="calculator-number">.</div>
+    <div class="calculator-operation">/</div>
+    <!--row 5-->
+    <div class="calculator-operation">√</div>
+    <div class="calculator-equals">=</div>
+    <div style="grid-column: span 2;"></div>
   </div>
 </div>
 
@@ -188,9 +290,33 @@ operations.forEach(button => {
 
 // Operator action
 function operation (choice) { // function to input operations into the calculator
+<<<<<<< HEAD
   if (firstNumber == null) { // once the operation is chosen, the displayed number is stored into the variable firstNumber
     // use parseFloat to properly capture decimal input
     firstNumber = parseFloat(output.innerHTML);
+=======
+  if (choice === "√") {
+    // unary square-root operation: apply immediately to the currently displayed number
+    const value = parseFloat(output.innerHTML);
+    const sqrtResult = Math.sqrt(value);
+    output.innerHTML = sqrtResult.toString();
+    firstNumber = sqrtResult;
+    nextReady = true;
+    operator = null;
+    return;
+  }
+
+  if (firstNumber == null) { // once the operation is chosen, the displayed number is stored into the variable firstNumber
+    firstNumber = parseInt(output.innerHTML);
+    nextReady = true;
+    operator = choice;
+    return; // exits function
+  }
+    // occurs if there is already a number stored in the calculator
+    firstNumber = calculate(firstNumber, parseFloat(output.innerHTML)); 
+    operator = choice;
+    output.innerHTML = firstNumber.toString();
+>>>>>>> 7b2d969 (Add calculator hacks markdown and notebook, update calculator code)
     nextReady = true;
     operator = choice;
     return; // exits function

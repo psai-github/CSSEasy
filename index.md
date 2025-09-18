@@ -1,10 +1,10 @@
 ---
 layout: base
-title: I'm [Your Full Name]
+title: Inventors
 hide: true
 ---
 
-Hi! My name is [Your Full Name]
+Hi! My name is Inventors
 
 ### Development Environment
 
@@ -40,6 +40,35 @@ Hi! My name is [Your Full Name]
     <a href="{{site.baseurl}}/turtle" style="text-decoration: none;">
         <div style="background-color: #FF0000; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
             Turtle
+        </div>
+    </a>
+        <a href="{{site.baseurl}}/calculator" style="text-decoration: none;">
+        <div style="background-color: #c59292ff; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Calculator
+        </div>
+    </a>
+        </a>
+        <a href="{{site.baseurl}}/custompong" style="text-decoration: none;">
+        <div style="background-color: #16d446ff; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Pong
+        </div>
+    </a>
+    </a>
+        <a href="{{site.baseurl}}/whack_a_mole" style="text-decoration: none;">
+        <div style="background-color: #747be2ff; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Whack-A-Mole
+        </div>
+    </a>
+    </a>
+        <a href="{{site.baseurl}}/rock-paper-scissor" style="text-decoration: none;">
+        <div style="background-color: #7f83adff; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Rock-paper-scissor
+        </div>
+    </a>
+    </a>
+        <a href="{{site.baseurl}}/background" style="text-decoration: none;">
+        <div style="background-color: #7b7d8fff; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Background
         </div>
     </a>
 </div>

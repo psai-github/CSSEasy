@@ -7,6 +7,11 @@ permalink: /snake/
 <style>
 
     body{
+        background-image: url('images/mole.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }
     .wrap{
         margin-left: auto;
@@ -18,6 +23,10 @@ permalink: /snake/
         border-style: solid;
         border-width: 10px;
         border-color: #aa9df5ff;
+        background-image: url('images/mole.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
     canvas:focus{
         outline: none;
@@ -65,6 +74,22 @@ permalink: /snake/
     #setting input:checked + label{
         background-color: #8886ebff;
         color: #000;
+    }
+
+    .container.bg-secondary {
+        background-color: rgba(108, 117, 125, 0.8) !important;
+        border-radius: 10px;
+    }
+
+    h2 {
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        text-align: center;
+    }
+
+    .fs-4 {
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
     }
 </style>
 

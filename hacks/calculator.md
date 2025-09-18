@@ -2,11 +2,7 @@
 title: JS Calculator
 comments: true
 hide: true
-<<<<<<< HEAD
 layout: base
-=======
-layout: 
->>>>>>> 7b2d969 (Add calculator hacks markdown and notebook, update calculator code)
 description: A common way to become familiar with a language is to build a calculator.  This calculator shows off button with actions.
 permalink: /calculator
 ---
@@ -29,40 +25,6 @@ HTML implementation of the calculator.
     Background is credited to Vanta JS and is implemented at bottom of this page
 -->
 <style>
-<<<<<<< HEAD
-  /* Calculator container: grid layout (4 columns) */
-  .calculator-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    max-width: 380px;
-    margin: 0 auto;
-    padding: 18px;
-    background: linear-gradient(180deg,#eef2f7,#dfe7f7);
-    border-radius: 14px;
-    box-shadow: 0 8px 30px rgba(7,22,48,0.12);
-    align-items: stretch;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  }
-
-  /* Top display */
-  .calculator-output {
-    grid-column: span 4;
-    border-radius: 10px;
-    padding: 12px 16px;
-    font-size: 28px;
-    background: linear-gradient(180deg,#0f1724,#111827);
-    color: #e6eef8;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    font-weight: 700;
-    height: 64px;
-    box-shadow: inset 0 -6px 12px rgba(0,0,0,0.35);
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-=======
   body {
     background: #10153a;
     margin: 0;
@@ -154,59 +116,9 @@ HTML implementation of the calculator.
       font-size: 1.3rem;
       height: 60px;
     }
->>>>>>> 7b2d969 (Add calculator hacks markdown and notebook, update calculator code)
   }
-
-  /* Buttons (numbers and ops) */
-  .calculator-number,
-  .calculator-operation,
-  .calculator-clear,
-  .calculator-equals {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    padding: 14px 8px;
-    font-size: 20px;
-    cursor: pointer;
-    user-select: none;
-    transition: transform 120ms ease, box-shadow 120ms ease;
-    box-shadow: 0 4px 8px rgba(15,23,42,0.06);
-  }
-
-  .calculator-number {
-    background: linear-gradient(180deg,#ffffff,#f1f5f9);
-    color: #0b1220;
-  }
-  .calculator-number:hover { transform: translateY(-2px); }
-
-  .calculator-operation {
-    background: linear-gradient(180deg,#ffb86b,#ff9a3c);
-    color: #08121a;
-    font-weight: 800;
-  }
-  .calculator-operation:hover { filter: brightness(0.96); }
-
-  .calculator-clear {
-    background: linear-gradient(180deg,#ff6b6b,#ef4444);
-    color: white;
-    font-weight: 700;
-  }
-
-  .calculator-equals {
-    background: linear-gradient(180deg,#10b981,#059669);
-    color: white;
-    font-weight: 800;
-  }
-
-  /* Small adjustments to canvas used by Vanta */
-  canvas { filter: none; display:block; }
-
-  /* Make the layout responsive on small screens */
-  @media (max-width: 420px) {
-    .calculator-container { max-width: 320px; padding: 12px; gap:8px; }
-    .calculator-output { font-size: 22px; height:56px; }
-    .calculator-number, .calculator-operation, .calculator-clear, .calculator-equals { padding: 12px 6px; font-size:18px; }
+  canvas {
+    filter: none;
   }
 </style>
 
@@ -290,11 +202,6 @@ operations.forEach(button => {
 
 // Operator action
 function operation (choice) { // function to input operations into the calculator
-<<<<<<< HEAD
-  if (firstNumber == null) { // once the operation is chosen, the displayed number is stored into the variable firstNumber
-    // use parseFloat to properly capture decimal input
-    firstNumber = parseFloat(output.innerHTML);
-=======
   if (choice === "√") {
     // unary square-root operation: apply immediately to the currently displayed number
     const value = parseFloat(output.innerHTML);
@@ -316,16 +223,7 @@ function operation (choice) { // function to input operations into the calculato
     firstNumber = calculate(firstNumber, parseFloat(output.innerHTML)); 
     operator = choice;
     output.innerHTML = firstNumber.toString();
->>>>>>> 7b2d969 (Add calculator hacks markdown and notebook, update calculator code)
     nextReady = true;
-    operator = choice;
-    return; // exits function
-  }
-  // occurs if there is already a number stored in the calculator
-  firstNumber = calculate(firstNumber, parseFloat(output.innerHTML)); 
-  operator = choice;
-  output.innerHTML = firstNumber.toString();
-  nextReady = true;
 }
 
 // Calculator

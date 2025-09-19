@@ -48,12 +48,11 @@ permalink: /Step1LXD
       margin-bottom: 25px;
     }
 
-    .video-container iframe {
+    .video-container video {
       position: absolute;
       top: 0; left: 0;
       width: 100%;
       height: 100%;
-      border: none;
       border-radius: 16px;
     }
 
@@ -87,17 +86,20 @@ permalink: /Step1LXD
 
   <!-- Video -->
   <div class="video-container">
-    <iframe src="Videos/Step1-basicCMD.mp4" allowfullscreen></iframe>
+    <video controls>
+      <source src="{{ site.baseurl }}/Videos/Step1-basicCMD.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </div>
 
   <!-- Description -->
   <div class="bubble">
     <p>
-VERY BASIC CMDS, You will use these every day and the rm rf command saves you multiple times, you can then Git clone a Repo to bring the latest version back.
+      VERY BASIC CMDS, You will use these every day and the <code>rm -rf</code> command saves you multiple times. You can then Git clone a repo to bring the latest version back.
     </p>
   </div>
 
   <!-- Back to homepage -->
-  <a href="index.html" class="back-link">⬅ Back to Homepage</a>
+  <a href="{{ site.baseurl }}/index.html" class="back-link">⬅ Back to Homepage</a>
 </body>
 </html>

@@ -1,259 +1,36 @@
 ---
 layout: bootstrap
-title: Homepage
-search_exclude: true
-description: LXD Project Homepage
-hide: true
+title: LXD Home
 permalink: /LXDHome
+description: LXD Project Homepage
+search_exclude: true
+hide: true
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSSE TRI 1 Guide</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 40px 20px;
-      background: linear-gradient(135deg, #1c1c1c, #2a2a2a);
-      color: #fff;
-    }
 
-    .bubble {
-      background: rgba(40, 40, 40, 0.85);
-      padding: 25px;
-      border-radius: 18px;
-      margin-bottom: 25px;
-      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-    }
+<!-- Title -->
+<div class="bubble">
+  <h1>Your Guide to CSSE TRI 1 is here</h1>
+  <p>
+    Yes, we all have had problems understanding the class, but don’t worry —
+    we have step-by-step video and photo guides on every setup tool and process
+    done in class, before you make this very exact project.
+  </p>
+</div>
 
-    h1 {
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-      text-align: center;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-    }
+<!-- Warning -->
+<div class="bubble" style="background:#333; border-left:4px solid #ffcc00; padding:15px; margin-bottom:25px;">
+  ⚠️ This only starts after you have installed <b>WSL, Ubuntu, and VSCode</b>.  
+  <a href="#">Click here to get the setup</a>
+</div>
 
-    p {
-      font-size: 1.05rem;
-      font-weight: 500;
-      text-align: center;
-      color: #ddd;
-    }
+<!-- Search -->
+<div class="bubble">
+  <input type="text" id="search" placeholder="Search activities by title, description, or tags..."
+    style="width:100%; padding:10px; border-radius:8px; border:1px solid #666; font-size:1rem;">
+</div>
 
-    .warning {
-      background: rgba(255, 255, 0, 0.1);
-      color: #ffe066;
-      border-left: 5px solid #ffe066;
-      padding: 20px;
-      border-radius: 12px;
-      text-align: center;
-      margin-bottom: 30px;
-      font-weight: 600;
-    }
-
-    .warning a {
-      color: #fff;
-      font-weight: bold;
-      margin-left: 8px;
-      text-decoration: underline;
-    }
-
-    .search-container {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .search-container input {
-      width: 70%;
-      padding: 14px 18px;
-      border-radius: 12px;
-      border: none;
-      outline: none;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      font-size: 16px;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-    }
-
-    .activities {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 25px;
-    }
-
-    .activity {
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-      padding: 20px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
-      transition: transform 0.2s;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .activity:hover {
-      transform: translateY(-5px);
-    }
-
-    .step-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 13px;
-      font-weight: bold;
-      color: #eee;
-      margin-bottom: 10px;
-    }
-
-    .step-number {
-      background: rgba(255, 255, 255, 0.15);
-      padding: 3px 10px;
-      border-radius: 8px;
-      font-size: 12px;
-    }
-
-    .activity-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    .activity-title a {
-      color: white;
-      text-decoration: none;
-    }
-
-    .activity-title a:hover {
-      text-decoration: underline;
-    }
-
-    .activity-desc {
-      font-size: 15px;
-      line-height: 1.5;
-      font-weight: 500;
-      color: #ddd;
-    }
-
-    .tags-toggle {
-      cursor: pointer;
-      font-size: 14px;
-      color: #bbb;
-      user-select: none;
-    }
-
-    .tags {
-      display: none;
-      margin-top: 8px;
-      font-size: 14px;
-      color: #ccc;
-    }
-
-    .tags span {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.15);
-      padding: 4px 10px;
-      margin: 3px;
-      border-radius: 8px;
-      font-size: 13px;
-    }
-  </style>
-</head>
-<body>
-  <!-- Title -->
-  <div class="bubble">
-    <h1>Your Guide to CSSE TRI 1 is here</h1>
-    <p>Yes, we all have had problems understanding the class, but don’t worry — we have step-by-step video and photo guides on every setup tool and process done in class, before you make this very exact project.</p>
-  </div>
-
-  <!-- Warning -->
-  <div class="warning">
-    ⚠️ This only starts after you have installed WSL, Ubuntu, and VSCode.
-    <a href="#">Click here to get the setup</a>
-  </div>
-
-  <!-- Search -->
-  <div class="search-container">
-    <input type="text" id="search" placeholder="Search activities by title, description, or tags...">
-  </div>
-
-  <!-- Activities -->
-  <div class="activities">
-    <div class="activity" data-title="Learn HTML Basics" data-desc="Start with simple HTML structure." data-tags="html,web,beginner">
-      <div class="step-bar">
-        <span>Step</span> <span class="step-number"></span>
-      </div>
-      <div class="activity-title"><a href="{{site.baseurl}}/Step1LXD" target="_blank">Basic CMDS</a></div>
-      <div class="activity-desc">Commands You will use everyday, MUST WATCH</div>
-      <div class="tags-toggle">Show Tags ▾</div>
-      <div class="tags"><span>html</span><span>basic</span><span>beginner</span><span>Step1</span><span>cd</span><span>ls</span></div>
-    </div>
-
-    <div class="activity" data-title="Style with CSS" data-desc="Make your website beautiful." data-tags="css,design,frontend">
-      <div class="step-bar">
-        <span>Step</span> <span class="step-number"></span>
-      </div>
-      <div class="activity-title"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">Style with CSS</a></div>
-      <div class="activity-desc">Make your website beautiful.</div>
-      <div class="tags-toggle">Show Tags ▾</div>
-      <div class="tags"><span>css</span><span>design</span><span>frontend</span></div>
-    </div>
-
-    <div class="activity" data-title="JavaScript Basics" data-desc="Add interactivity to your site." data-tags="javascript,frontend,coding">
-      <div class="step-bar">
-        <span>Step</span> <span class="step-number"></span>
-      </div>
-      <div class="activity-title"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">JavaScript Basics</a></div>
-      <div class="activity-desc">Add interactivity to your site.</div>
-      <div class="tags-toggle">Show Tags ▾</div>
-      <div class="tags"><span>javascript</span><span>frontend</span><span>coding</span></div>
-    </div>
-  </div>
-
-  <script>
-    // Auto-number steps
-    document.querySelectorAll(".step-number").forEach((el, idx) => {
-      el.textContent = idx + 1;
-    });
-
-    // Search function (includes title, desc, tags)
-    document.getElementById("search").addEventListener("input", function () {
-      let query = this.value.toLowerCase();
-      let activities = document.querySelectorAll(".activity");
-
-      activities.forEach(activity => {
-        let title = activity.dataset.title.toLowerCase();
-        let desc = activity.dataset.desc.toLowerCase();
-        let tags = activity.dataset.tags.toLowerCase();
-
-        if (title.includes(query) || desc.includes(query) || tags.includes(query)) {
-          activity.style.display = "flex";
-        } else {
-          activity.style.display = "none";
-        }
-      });
-    });
-
-    // Toggle tags visibility
-    document.querySelectorAll(".tags-toggle").forEach(toggle => {
-      toggle.addEventListener("click", function () {
-        let tags = this.nextElementSibling;
-        if (tags.style.display === "block") {
-          tags.style.display = "none";
-          this.textContent = "Show Tags ▾";
-        } else {
-          tags.style.display = "block";
-          this.textContent = "Hide Tags ▴";
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+<!-- Activities -->
+<div class="bubble">
+  <h2>Activities</h2>
+  <p>List of activities will go here.</p>
+</div>

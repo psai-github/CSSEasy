@@ -1,13 +1,13 @@
-<!-- ---
+---
 layout: base
 title: Homepage
 search_exclude: true
 description: LXD Project Homepage
 hide: true
 permalink: /LXDHome
---- -->
+---
 
-{% include nav/home.html %}
+<link rel="stylesheet" href="{{site.baseurl}}/assets/css/lxdproject.css">
 
 <!-- Main Content -->
 <div class="bubble">

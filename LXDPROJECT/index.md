@@ -104,3 +104,9 @@ permalink: /LXDHome
     });
   });
 </script>
+
+<!-- Themed Buttons at the Bottom -->
+<div class="bottom-buttons" style="display: flex; justify-content: center; gap: 1.5rem; margin-top: 2.5rem; margin-bottom: 2rem;">
+  <a href="#" class="themed-btn" style="background: #4f8cff; color: #fff; padding: 0.8em 2em; border-radius: 8px; font-size: 1.1em; text-decoration: none; box-shadow: 0 2px 8px rgba(79,140,255,0.12); transition: background 0.2s; font-weight: 600;">VarClasses</a>
+  <a href="{{site.baseurl}}/tools/VarClass" class="themed-btn" style="background: #2ecc71; color: #fff; padding: 0.8em 2em; border-radius: 8px; font-size: 1.1em; text-decoration: none; box-shadow: 0 2px 8px rgba(46,204,113,0.12); transition: background 0.2s; font-weight: 600;">Iterations</a>
+</div>

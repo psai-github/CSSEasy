@@ -144,9 +144,9 @@ p {
 }
 
 a.themed-btn, .themed-btn {
-  transition: background 0.2s, transform 0.18s;
+  transition: background 0.2s, transform 0.18s !important;
 }
 
 a.themed-btn:hover, .themed-btn:hover {
-  transform: translateY(-8px);
+  transform: translateY(-8px) !important;
 }

@@ -83,7 +83,7 @@ permalink: /LXDHome
       let tags = activity.dataset.tags.toLowerCase();
 
       if (title.includes(query) || desc.includes(query) || tags.includes(query)) {
-        activity.style.display = "flex";
+        activity.style.display = "";
       } else {
         activity.style.display = "none";
       }

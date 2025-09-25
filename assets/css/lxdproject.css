@@ -142,3 +142,11 @@ p {
   border-radius: 8px;
   font-size: 13px;
 }
+
+a.themed-btn, .themed-btn {
+  transition: background 0.2s, transform 0.18s;
+}
+
+a.themed-btn:hover, .themed-btn:hover {
+  transform: translateY(-8px);
+}

@@ -7,7 +7,7 @@ hide: true
 permalink: /LXDHome
 ---
 
-<link rel="stylesheet" href="{{ '/assets/css/lxdproject.css' | relative_url }}">
+<link rel="stylesheet" href="{{site.baseurl}}/assets/css/lxdproject.css">
 
 <!-- Main Content -->
 <div class="bubble">
@@ -64,6 +64,15 @@ permalink: /LXDHome
     <div class="tags-toggle">Show Tags ▾</div>
     <div class="tags"><span>jupyter</span><span>notebook</span><span>examples</span></div>
   </div>
+  <div class="activity" data-title="VARCLASSES" data-desc="Learn Variables and Classes" data-tags="Classes,Variables,Varclasses">
+    <div class="step-bar">
+      <span>Step</span> <span class="step-number"></span>
+    </div>
+    <div class="activity-title"><a href="{{site.baseurl}}/tools/VarClass" target="_blank">VarClasses</a></div>
+    <div class="activity-desc">Variables and Classes Blog</div>
+    <div class="tags-toggle">Show Tags ▾</div>
+    <div class="tags"><span>Varclasses</span><span>Variables</span><span>Classes</span></div>
+  </div>
 </div>
 
 <script>
@@ -83,7 +92,7 @@ permalink: /LXDHome
       let tags = activity.dataset.tags.toLowerCase();
 
       if (title.includes(query) || desc.includes(query) || tags.includes(query)) {
-        activity.style.display = "";
+        activity.style.display = "flex";
       } else {
         activity.style.display = "none";
       }
@@ -104,9 +113,3 @@ permalink: /LXDHome
     });
   });
 </script>
-
-<!-- Themed Buttons at the Bottom -->
-<div class="bottom-buttons" style="display: flex; justify-content: center; gap: 1.5rem; margin-top: 2.5rem; margin-bottom: 2rem;">
-  <a href="{{site.baseurl}}/tools/VarClass" class="themed-btn" style="background: #4f8cff; color: #fff; padding: 0.8em 2em; border-radius: 8px; font-size: 1.1em; text-decoration: none; box-shadow: 0 2px 8px rgba(79,140,255,0.12); transition: background 0.2s; font-weight: 600;">VarClasses</a>
-  <a href="{{site.baseurl}}/tools/VarClass" class="themed-btn" style="background: #2ecc71; color: #fff; padding: 0.8em 2em; border-radius: 8px; font-size: 1.1em; text-decoration: none; box-shadow: 0 2px 8px rgba(46,204,113,0.12); transition: background 0.2s; font-weight: 600;">Iterations</a>
-</div>
